@@ -1,0 +1,45 @@
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  max-width: 20rem;
+  width: 100%;
+  min-height: 30rem;
+  text-align: center;
+
+  border: 1px solid black;
+  border-radius: 10px;
+  box-shadow: 0 0 10px;
+  margin: 2rem;
+  padding: 1rem;
+  color: white;
+  background-color: black;
+
+  a {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-decoration: none;
+
+    &:is(:active, :hover) {
+      color: #800080;
+      cursor: pointer;
+    }
+  }
+
+  img {
+    width: 100%;
+    max-width: 10rem;
+    max-height: 10rem;
+    height: 100%;
+  }
+}

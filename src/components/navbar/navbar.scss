@@ -1,0 +1,27 @@
+.navbar {
+  background: #000;
+  min-height: 6rem;
+  color: #fff;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: auto;
+
+  font-size: 2rem;
+
+  a {
+    color: white;
+    text-decoration: none;
+
+    &:is(:active, :hover) {
+      color: #800080;
+      cursor: pointer;
+    }
+  }
+
+  .logo {
+    color: #fff;
+    font-size: 2rem;
+  }
+}

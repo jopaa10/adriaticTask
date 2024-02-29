@@ -1,0 +1,41 @@
+@import "./mixins";
+@import "./variables";
+
+html {
+  // 1rem = 10px
+  font-size: 62.5%;
+  background-color: #545454;
+
+  @include respond(sm-phone) {
+    font-size: 52%;
+  }
+
+  @include respond(tab-lg_sm) {
+    font-size: 54%;
+  }
+
+  @include respond(tab-lg_lg) {
+    font-size: 54.5%;
+  }
+
+  @include respond(sm-desktop) {
+    font-size: 56.25%;
+  }
+
+  @include respond(lg-desktop) {
+    font-size: 75%;
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.App {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  flex-direction: column;
+}

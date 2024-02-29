@@ -1,0 +1,33 @@
+@import "./variables";
+
+@mixin respond($breakpoint) {
+  @if $breakpoint == sm-phone {
+    @media (max-width: $sm) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == tab-lg_sm {
+    @media screen and (min-width: $md-sm) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == tab-lg_lg {
+    @media screen and (min-width: $md) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == sm-desktop {
+    @media screen and (min-width: $lg) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == lg-desktop {
+    @media (min-width: $extra-lg) {
+      @content;
+    }
+  }
+}

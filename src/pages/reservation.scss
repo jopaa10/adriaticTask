@@ -1,0 +1,26 @@
+.reservation-container {
+  display: flex;
+  flex-direction: column;
+  font-size: 2rem;
+  margin: 0 2rem;
+  color: white;
+
+  a {
+    text-decoration: none;
+    color: white;
+    font-weight: 700;
+    border: 1px solid black;
+    max-width: 20rem;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px;
+    text-align: center;
+    padding: 1rem;
+    font-size: 1.5rem;
+
+    &:is(:active, :hover) {
+      color: #800080;
+      cursor: pointer;
+    }
+  }
+}
