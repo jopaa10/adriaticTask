@@ -12,6 +12,7 @@ function DatePicker({
   const [maxStartDate, setMaxStartDate] = useState("");
   const [minEndDate, setMinEndDate] = useState("");
   const [maxEndDate, setMaxEndDate] = useState("");
+  const [inputFocused, setInputFocused] = useState(false);
 
   const handleStartDateChange = (event) => {
     const selectedStartDate = event.target.value
@@ -88,11 +89,7 @@ function DatePicker({
         max={maxStartDate}
         onChange={handleStartDateChange}
         onKeyDown={(e) => {
-          if (
-            (e.key >= "0" && e.key <= "9") || // Digits
-            (e.key >= "a" && e.key <= "z") || // Lowercase letters
-            (e.key >= "A" && e.key <= "Z") // Uppercase letters
-          ) {
+          if (!inputFocused) {
             e.preventDefault();
           }
         }}
@@ -107,13 +104,7 @@ function DatePicker({
         max={maxEndDate}
         onChange={handleEndDateChange}
         onKeyDown={(e) => {
-          if (
-            (e.key >= "0" && e.key <= "9") || // Digits
-            (e.key >= "a" && e.key <= "z") || // Lowercase letters
-            (e.key >= "A" && e.key <= "Z") // Uppercase letters
-          ) {
-            e.preventDefault();
-          }
+          e.preventDefault();
         }}
       />
     </div>
