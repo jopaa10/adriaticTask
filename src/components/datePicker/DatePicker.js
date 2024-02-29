@@ -87,7 +87,15 @@ function DatePicker({
         min={minStartDate}
         max={maxStartDate}
         onChange={handleStartDateChange}
-        onKeyDown={(e) => e.preventDefault()}
+        onKeyDown={(e) => {
+          if (
+            (e.key >= "0" && e.key <= "9") || // Digits
+            (e.key >= "a" && e.key <= "z") || // Lowercase letters
+            (e.key >= "A" && e.key <= "Z") // Uppercase letters
+          ) {
+            e.preventDefault();
+          }
+        }}
       />
 
       <label htmlFor="endDate">End Date:</label>
@@ -98,7 +106,15 @@ function DatePicker({
         min={minEndDate}
         max={maxEndDate}
         onChange={handleEndDateChange}
-        onKeyDown={(e) => e.preventDefault()}
+        onKeyDown={(e) => {
+          if (
+            (e.key >= "0" && e.key <= "9") || // Digits
+            (e.key >= "a" && e.key <= "z") || // Lowercase letters
+            (e.key >= "A" && e.key <= "Z") // Uppercase letters
+          ) {
+            e.preventDefault();
+          }
+        }}
       />
     </div>
   );
