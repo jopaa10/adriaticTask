@@ -11,6 +11,7 @@ import { ApplyFilters } from "../utils/applyFilters";
 import { calculateTotalPrice } from "../utils/calculateTotalPrice";
 import "./home.scss";
 import { Amenities } from "../components/amenities/Amenities";
+import { FilterButtons } from "../components/filterButtons/FilterButtons";
 
 function Home() {
   let [accomodation, setAccomodation] = useState([]);
@@ -50,30 +51,12 @@ function Home() {
     setCapacity(uniqueCapacities);
   }
 
-  const handleResetFilters = () => {
-    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-    checkboxes.forEach((checkbox) => {
-      checkbox.checked = false;
-    });
-    setStartDate("");
-    setEndDate("");
-    setIsDatePicked(false);
-    setSelectedCapacity(0);
-    fetchData();
-  };
-
   const handleOnChange = (e) => {
     const { checked, value } = e.target;
     setSelectedAmenities((prev) => {
       if (checked) return [...prev, value];
       return prev.filter((amenity) => amenity !== value);
     });
-  };
-
-  const handleDateFilter = async (startDate, endDate) => {
-    const data = await filterDataByAvailableDates(startDate, endDate);
-    setIsDatePicked(true);
-    setAccomodation(data);
   };
 
   const handleApplyFilters = async () => {
@@ -124,7 +107,6 @@ function Home() {
       setAccomodation(filteredAccommodations);
       setIsDatePicked(true);
     } else {
-      // Display a message indicating that all options need to be selected
       alert("Please select all options before applying filters.");
       return;
     }
@@ -145,7 +127,6 @@ function Home() {
       <div className="home-container__filter-container">
         <DatePicker
           availableDates={availableDates}
-          onDateFilter={handleDateFilter}
           startDate={startDate}
           setStartDate={setStartDate}
           endDate={endDate}
@@ -159,10 +140,14 @@ function Home() {
 
         <Amenities amenities={amenities} handleOnChange={handleOnChange} />
       </div>
-      <div className="filter-buttons">
-        <button onClick={handleApplyFilters}>apply filters</button>
-        <button onClick={handleResetFilters}>reset filters</button>
-      </div>
+      <FilterButtons
+        handleApplyFilters={handleApplyFilters}
+        setStartDate={setStartDate}
+        setEndDate={setEndDate}
+        setIsDatePicked={setIsDatePicked}
+        setSelectedCapacity={setSelectedCapacity}
+        fetchData={fetchData}
+      />
       {loading ? (
         <p>Loading...</p>
       ) : (

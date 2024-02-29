@@ -3,7 +3,6 @@ import "./datePicker.scss";
 
 function DatePicker({
   availableDates,
-  onDateFilter,
   startDate,
   setStartDate,
   endDate,
@@ -15,39 +14,35 @@ function DatePicker({
   const [maxEndDate, setMaxEndDate] = useState("");
 
   const handleStartDateChange = (event) => {
-    const selectedStartDate = new Date(event.target.value);
+    const selectedStartDate = event.target.value
+      ? new Date(event.target.value)
+      : null;
+    const selectedEndDate = new Date(endDate);
+
+    if (selectedEndDate && selectedStartDate > selectedEndDate) {
+      setEndDate(event.target.value);
+    }
+
     setStartDate(event.target.value);
-
-    // Update min end date to prevent selecting end dates before the start date
-    setMinEndDate(selectedStartDate.toISOString().split("T")[0]);
-
-    // Calculate total days if both start and end dates are selected
-    // if (endDate) {
-    //   const selectedEndDate = new Date(endDate);
-    //   const differenceInTime =
-    //     selectedEndDate.getTime() - selectedStartDate.getTime();
-    //   const differenceInDays = differenceInTime / (1000 * 3600 * 24);
-    //   setTotalDays(differenceInDays);
-    // }
+    setMinEndDate(
+      selectedStartDate ? selectedStartDate.toISOString().split("T")[0] : ""
+    );
   };
 
   const handleEndDateChange = (event) => {
-    const selectedEndDate = new Date(event.target.value);
+    const selectedEndDate = event.target.value
+      ? new Date(event.target.value)
+      : null;
+    const selectedStartDate = new Date(startDate);
+
+    if (selectedStartDate && selectedStartDate > selectedEndDate) {
+      setStartDate(event.target.value);
+    }
+
     setEndDate(event.target.value);
-
-    setMaxStartDate(selectedEndDate.toISOString().split("T")[0]);
-
-    // if (startDate) {
-    //   const selectedStartDate = new Date(startDate);
-    //   const differenceInTime =
-    //     selectedEndDate.getTime() - selectedStartDate.getTime();
-    //   const differenceInDays = differenceInTime / (1000 * 3600 * 24);
-    //   setTotalDays(differenceInDays);
-    // }
-  };
-
-  const handleFilter = () => {
-    onDateFilter(startDate, endDate);
+    setMaxStartDate(
+      selectedEndDate ? selectedEndDate.toISOString().split("T")[0] : ""
+    );
   };
 
   useEffect(() => {
@@ -80,10 +75,6 @@ function DatePicker({
           : "2024-12-31"
       );
     }
-
-    // if (!startDate && !endDate) {
-    //   setTotalDays(0);
-    // }
   }, [availableDates]);
 
   return (
@@ -96,6 +87,7 @@ function DatePicker({
         min={minStartDate}
         max={maxStartDate}
         onChange={handleStartDateChange}
+        onKeyDown={(e) => e.preventDefault()}
       />
 
       <label htmlFor="endDate">End Date:</label>
@@ -106,6 +98,7 @@ function DatePicker({
         min={minEndDate}
         max={maxEndDate}
         onChange={handleEndDateChange}
+        onKeyDown={(e) => e.preventDefault()}
       />
     </div>
   );

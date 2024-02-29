@@ -17,12 +17,10 @@ export function calculateTotalPrice(startDate, endDate, priceList) {
       totalPrice = pricePerNight.pricePerNight;
     }
   } else {
-    // Loop through each price interval in the priceList
     for (const interval of priceList) {
       const intervalStartTimestamp = new Date(interval.intervalStart).getTime();
       const intervalEndTimestamp = new Date(interval.intervalEnd).getTime();
 
-      // Check if the interval overlaps with the selected date range
       if (
         intervalStartTimestamp <= endTimestamp &&
         intervalEndTimestamp >= startTimestamp
