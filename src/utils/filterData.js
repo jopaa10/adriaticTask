@@ -16,7 +16,7 @@ export async function filterDataByAmenities(amenities) {
   const data = await getAccomodation();
 
   const filteredAccommodations = data.filter((accommodation) => {
-    return accommodation.amenities[amenities];
+    return amenities.every((amenity) => accommodation.amenities[amenity]);
   });
 
   return filteredAccommodations;
@@ -43,7 +43,7 @@ export async function filterDataByAvailableDates(startDate, endDate) {
 
 export async function filterAccommodationsByPrice(data) {
   const filteredAccommodations = data.filter((accommodation) => {
-    return accommodation.totalPrice !== 0; // Exclude accommodations with a total price of zero
+    return accommodation.totalPrice !== 0;
   });
 
   return filteredAccommodations;

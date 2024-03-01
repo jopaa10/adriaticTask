@@ -4,6 +4,7 @@ export function FilterButtons({
   setEndDate,
   setIsDatePicked,
   setSelectedCapacity,
+  setSelectedAmenities,
   fetchData,
 }) {
   const handleResetFilters = () => {
@@ -15,6 +16,7 @@ export function FilterButtons({
     setEndDate("");
     setIsDatePicked(false);
     setSelectedCapacity(0);
+    setSelectedAmenities([]);
     fetchData();
   };
 

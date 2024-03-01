@@ -99,8 +99,20 @@ function Home() {
 
       setAccomodation(filteredAccommodations);
       setIsDatePicked(true);
+    } else if (capacity || selectedAmenities.length > 0) {
+      filterData = await ApplyFilters(
+        startDate,
+        endDate,
+        selectedCapacity,
+        selectedAmenities
+      );
+
+      filterData = [...new Set(filterData)];
+      console.log(filterData);
+
+      setAccomodation(filterData);
     } else {
-      alert("Please select dates first.");
+      alert("Choose one filter to get data");
       return;
     }
   };
@@ -139,6 +151,7 @@ function Home() {
         setEndDate={setEndDate}
         setIsDatePicked={setIsDatePicked}
         setSelectedCapacity={setSelectedCapacity}
+        setSelectedAmenities={setSelectedAmenities}
         fetchData={fetchData}
       />
       {loading ? (

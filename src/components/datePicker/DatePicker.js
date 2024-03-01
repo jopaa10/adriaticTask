@@ -12,7 +12,6 @@ function DatePicker({
   const [maxStartDate, setMaxStartDate] = useState("");
   const [minEndDate, setMinEndDate] = useState("");
   const [maxEndDate, setMaxEndDate] = useState("");
-  const [inputFocused, setInputFocused] = useState(false);
 
   const handleStartDateChange = (event) => {
     const selectedStartDate = event.target.value
