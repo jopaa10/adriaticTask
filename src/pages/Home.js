@@ -1,10 +1,7 @@
 import { useEffect, useState } from "react";
 import { getAccomodation } from "../api/getAccomodation";
 import Card from "../components/Card";
-import {
-  filterAccommodationsByPrice,
-  filterDataByAvailableDates,
-} from "../utils/filterData";
+import { filterAccommodationsByPrice } from "../utils/filterData";
 import DatePicker from "../components/datePicker/DatePicker";
 import { Capacity } from "../components/capacity/Capacity";
 import { ApplyFilters } from "../utils/applyFilters";
@@ -14,7 +11,7 @@ import { Amenities } from "../components/amenities/Amenities";
 import { FilterButtons } from "../components/filterButtons/FilterButtons";
 
 function Home() {
-  let [accomodation, setAccomodation] = useState([]);
+  let [accommodation, setAccommodation] = useState([]);
   let [capacity, setCapacity] = useState([]);
   const [amenities, setAmenities] = useState([]);
   const [availableDates, setAvailableDates] = useState([]);
@@ -30,7 +27,7 @@ function Home() {
 
     if (!data) return;
 
-    setAccomodation(data);
+    setAccommodation(data);
     setLoading(false);
 
     const uniqueCapacities = data.reduce((acc, item) => {
@@ -97,7 +94,7 @@ function Home() {
         filteredAccommodationWithTotalPrice
       );
 
-      setAccomodation(filteredAccommodations);
+      setAccommodation(filteredAccommodations);
       setIsDatePicked(true);
     } else if (capacity || selectedAmenities.length > 0) {
       filterData = await ApplyFilters(
@@ -109,7 +106,7 @@ function Home() {
 
       filterData = [...new Set(filterData)];
 
-      setAccomodation(filterData);
+      setAccommodation(filterData);
     } else {
       alert("Choose filter date to get prices");
       return;
@@ -157,13 +154,13 @@ function Home() {
         <p>Loading...</p>
       ) : (
         <div className="card-container">
-          {accomodation.length === 0 ? (
+          {accommodation.length === 0 ? (
             <p>
               there are no available accommodations according to the selected
               filters
             </p>
           ) : (
-            accomodation.map((item, index) => (
+            accommodation.map((item, index) => (
               <div className="card" key={index}>
                 <Card
                   props={item}
