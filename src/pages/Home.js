@@ -111,7 +111,7 @@ function Home() {
 
       setAccomodation(filterData);
     } else {
-      alert("Choose one filter to get data");
+      alert("Choose filter date to get prices");
       return;
     }
   };
