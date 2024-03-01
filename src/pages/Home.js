@@ -157,18 +157,25 @@ function Home() {
         <p>Loading...</p>
       ) : (
         <div className="card-container">
-          {accomodation.map((item, index) => (
-            <div className="card" key={index}>
-              <Card
-                props={item}
-                isDatePicked={isDatePicked}
-                selectedCapacity={selectedCapacity}
-                startDate={startDate}
-                endDate={endDate}
-                totalPrice={item.totalPrice}
-              />
-            </div>
-          ))}
+          {accomodation.length === 0 ? (
+            <p>
+              there are no available accommodations according to the selected
+              filters
+            </p>
+          ) : (
+            accomodation.map((item, index) => (
+              <div className="card" key={index}>
+                <Card
+                  props={item}
+                  isDatePicked={isDatePicked}
+                  selectedCapacity={selectedCapacity}
+                  startDate={startDate}
+                  endDate={endDate}
+                  totalPrice={item.totalPrice}
+                />
+              </div>
+            ))
+          )}
         </div>
       )}
     </section>
