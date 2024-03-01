@@ -57,6 +57,7 @@ function Home() {
   };
 
   const handleApplyFilters = async () => {
+    setLoading(true);
     let filterData = [];
 
     if (startDate && endDate) {
@@ -111,6 +112,7 @@ function Home() {
       alert("Choose filter date to get prices");
       return;
     }
+    setLoading(false);
   };
 
   const handleSelectCapacity = (selectedCapacity) => {
