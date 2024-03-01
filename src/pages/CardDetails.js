@@ -25,6 +25,10 @@ function CardDetails() {
             <img src={data.image} alt={data.title} />
           </div>
           <div className="card-details__details">
+            <p>Capacity: {data.capacity}</p>
+            {data.beachDistanceInMeters && (
+              <p>Beach: {data.beachDistanceInMeters} m</p>
+            )}
             {Object.entries(data.amenities).map(([key, value]) => (
               <p key={key}>
                 {key}: {value ? "yes" : "no"}

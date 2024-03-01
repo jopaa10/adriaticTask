@@ -45,7 +45,6 @@ function Card({
         ) : (
           <PriceMinMaxDisplay priceIntervals={props.pricelistInEuros} />
         )}
-        {/* <Link to={`/${id}`}>More info </Link> */}
       </div>
     </Link>
   );
