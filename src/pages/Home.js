@@ -108,7 +108,6 @@ function Home() {
       );
 
       filterData = [...new Set(filterData)];
-      console.log(filterData);
 
       setAccomodation(filterData);
     } else {
