@@ -10,8 +10,8 @@ export const PriceMinMaxDisplay = ({ priceIntervals }) => {
   return (
     <div className="price">
       <h2 className="price__title">Please choose dates to get exact prices</h2>
-      <p>Minimum Price: {minPrice}</p>
-      <p>Maximum Price: {maxPrice}</p>
+      <p>Minimum Price: {minPrice} €</p>
+      <p>Maximum Price: {maxPrice} €</p>
     </div>
   );
 };

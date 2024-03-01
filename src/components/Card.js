@@ -13,11 +13,14 @@ function Card({
   const { title, image, capacity, beachDistanceInMeters, id } = props;
   const navigate = useNavigate();
 
-  const handleMakeReservation = (title, e) => {
+  const handleMakeReservation = (e, title, capacity) => {
     e.preventDefault();
+
+    let chosenCapacity = !selectedCapacity ? capacity : selectedCapacity;
+
     const reservationInfo = {
       title,
-      selectedCapacity,
+      chosenCapacity,
       startDate,
       endDate,
       totalPrice,
@@ -38,7 +41,7 @@ function Card({
         {isDatePicked ? (
           <div>
             <p>Total price is: {totalPrice}</p>
-            <button onClick={(e) => handleMakeReservation(title, e)}>
+            <button onClick={(e) => handleMakeReservation(e, title, capacity)}>
               Reserve
             </button>
           </div>
