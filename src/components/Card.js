@@ -13,8 +13,8 @@ function Card({
   const { title, image, capacity, beachDistanceInMeters, id } = props;
   const navigate = useNavigate();
 
-  const handleMakeReservation = (title, capacity) => {
-    console.log(title, capacity);
+  const handleMakeReservation = (title, e) => {
+    e.preventDefault();
     const reservationInfo = {
       title,
       selectedCapacity,
@@ -27,7 +27,7 @@ function Card({
   };
 
   return (
-    <>
+    <Link to={`/${id}`}>
       <div className="image">
         <img src={image} alt={title} />
       </div>
@@ -38,16 +38,16 @@ function Card({
         {isDatePicked ? (
           <div>
             <p>Total price is: {totalPrice}</p>
-            <button onClick={() => handleMakeReservation(title, capacity)}>
+            <button onClick={(e) => handleMakeReservation(title, e)}>
               Reserve
             </button>
           </div>
         ) : (
           <PriceMinMaxDisplay priceIntervals={props.pricelistInEuros} />
         )}
-        <Link to={`/${id}`}>More info </Link>
+        {/* <Link to={`/${id}`}>More info </Link> */}
       </div>
-    </>
+    </Link>
   );
 }
 

@@ -62,12 +62,7 @@ function Home() {
   const handleApplyFilters = async () => {
     let filterData = [];
 
-    if (
-      startDate &&
-      endDate &&
-      selectedCapacity &&
-      selectedAmenities.length > 0
-    ) {
+    if (startDate && endDate) {
       filterData = await ApplyFilters(
         startDate,
         endDate,
@@ -102,12 +97,10 @@ function Home() {
         filteredAccommodationWithTotalPrice
       );
 
-      console.log(filteredAccommodationWithTotalPrice);
-
       setAccomodation(filteredAccommodations);
       setIsDatePicked(true);
     } else {
-      alert("Please select all options before applying filters.");
+      alert("Please select dates first.");
       return;
     }
   };

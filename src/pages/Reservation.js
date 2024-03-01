@@ -12,7 +12,7 @@ function Reservation() {
         You have successfully make a reservation for {data.title} accomodation.
       </h2>
       <p>
-        Capacity is {data.selectedCapacity}. You are staying here from
+        Capacity is {data.selectedCapacity}. You are staying here from{" "}
         {data.startDate} to {data.endDate}
       </p>
       <p>

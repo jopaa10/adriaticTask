@@ -89,9 +89,7 @@ function DatePicker({
         max={maxStartDate}
         onChange={handleStartDateChange}
         onKeyDown={(e) => {
-          if (!inputFocused) {
-            e.preventDefault();
-          }
+          e.preventDefault();
         }}
       />
 

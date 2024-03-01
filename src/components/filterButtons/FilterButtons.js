@@ -20,8 +20,10 @@ export function FilterButtons({
 
   return (
     <div className="filter-buttons">
-      <button onClick={handleApplyFilters}>apply filters</button>
       <button onClick={handleResetFilters}>reset filters</button>
+      <button onClick={handleApplyFilters} className="apply">
+        apply filters
+      </button>
     </div>
   );
 }
