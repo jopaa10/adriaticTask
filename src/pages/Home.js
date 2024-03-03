@@ -4,15 +4,15 @@ import Card from "../components/Card";
 import { filterAccommodationsByPrice } from "../utils/filterData";
 import DatePicker from "../components/datePicker/DatePicker";
 import { Capacity } from "../components/capacity/Capacity";
-import { ApplyFilters } from "../utils/applyFilters";
+import { applyFilters } from "../utils/applyFilters";
 import { calculateTotalPrice } from "../utils/calculateTotalPrice";
 import "./home.scss";
 import { Amenities } from "../components/amenities/Amenities";
 import { FilterButtons } from "../components/filterButtons/FilterButtons";
 
 function Home() {
-  let [accommodation, setAccommodation] = useState([]);
-  let [capacity, setCapacity] = useState([]);
+  const [accommodation, setAccommodation] = useState([]);
+  const [capacity, setCapacity] = useState([]);
   const [amenities, setAmenities] = useState([]);
   const [availableDates, setAvailableDates] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -61,7 +61,7 @@ function Home() {
     let filterData = [];
 
     if (startDate && endDate) {
-      filterData = await ApplyFilters(
+      filterData = await applyFilters(
         startDate,
         endDate,
         selectedCapacity,
@@ -98,7 +98,7 @@ function Home() {
       setAccommodation(filteredAccommodations);
       setIsDatePicked(true);
     } else if (capacity || selectedAmenities.length > 0) {
-      filterData = await ApplyFilters(
+      filterData = await applyFilters(
         startDate,
         endDate,
         selectedCapacity,

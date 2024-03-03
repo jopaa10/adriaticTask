@@ -4,7 +4,7 @@ import {
   filterDataByPeople,
 } from "./filterData";
 
-export async function ApplyFilters(
+export async function applyFilters(
   startDate,
   endDate,
   selectedCapacity,
