@@ -151,6 +151,7 @@ function Home() {
         setSelectedCapacity={setSelectedCapacity}
         setSelectedAmenities={setSelectedAmenities}
         fetchData={fetchData}
+        setLoading={setLoading}
       />
       {loading ? (
         <p>Loading...</p>

@@ -6,8 +6,10 @@ export function FilterButtons({
   setSelectedCapacity,
   setSelectedAmenities,
   fetchData,
+  setLoading,
 }) {
   const handleResetFilters = () => {
+    setLoading(true);
     const checkboxes = document.querySelectorAll('input[type="checkbox"]');
     checkboxes.forEach((checkbox) => {
       checkbox.checked = false;
